@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "BuildTool": {
+      "commandName": "Project",
+      "commandLineArgs": "Adf:UpdateTrigger -i C:\\src\\ComFin.Controls\\.ev2\\Templates\\ARMTemplateForFactory.Control.json",
+      "environmentVariables": {
+        "ENVIRONMENT": "dev"
+      }
+    }
+  }
+}
