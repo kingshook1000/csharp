@@ -11,6 +11,18 @@ namespace FactoryMethod
 
         
     }
+
+    public class Employee
+    {
+        public int EmployeeType;
+        public int Bonus;
+        public int MedicalAllowance;
+        public int RentalAllowance;
+        public Employee()
+        {
+            
+        }
+    }
     
     public interface IEmplyee
     {
@@ -24,6 +36,11 @@ namespace FactoryMethod
         {
             return 100;
         }
+
+        public int GetMonthlyMedication()
+        {
+            return 2000;
+        }
     }
 
     public class ContractEmployee : IEmplyee
@@ -31,6 +48,11 @@ namespace FactoryMethod
         public int GetBonas()
         {
             return 10;
+        }
+
+        public int GetMonthlyRental()
+        {
+            return 1000;
         }
     }
 
@@ -49,6 +71,39 @@ namespace FactoryMethod
 
             return null;
 
+        }
+    }
+
+    public abstract class BaseEmployeeFactory
+    {
+        protected Employee _employee;
+
+        public BaseEmployeeFactory(Employee employee)
+        {
+            _employee = employee;
+        }
+        public abstract IEmplyee Create();
+
+        public Employee ApplySalary()
+        {
+            IEmplyee empoyeeType = this.Create();
+            _employee.Bonus = empoyeeType.GetBonas();
+            return _employee;
+        }
+    }
+
+    public class PermanentEmployeeFactory : BaseEmployeeFactory
+    {
+        public PermanentEmployeeFactory(Employee employee): base(employee)
+        {
+            
+        }
+        public override IEmplyee Create()
+        {
+            PermanentEmployee pe = new PermanentEmployee();
+
+            _employee.MedicalAllowance = pe.GetMonthlyMedication();
+            return pe;
         }
     }
 
