@@ -16,6 +16,20 @@ namespace ArrayTest
             parties[0] = new int[] { 1, 2, 3 };
             parties[1] = new int[] { 10, 20 };
 
+            int[,] twoD = new int[2, 3] { { 1, 2, 3 }, { 2, 4, 6 } };
+            string[,,] cube = new string[2, 3, 4];
+            for (int i = 0; i <= cube.GetUpperBound(0); i++)
+            {
+                for (int j = 0; j <= cube.GetUpperBound(1); j++)
+                {
+                    for (int k = 0; k <= cube.GetUpperBound(2); k++)
+                    {
+                        cube[i, j, k] = $"{i}-{j}-{k}";
+                    }
+                }
+            }
+            Console.WriteLine($"Rank of cube = {cube.Rank} Total Elements = {cube.Length}");
+
             string[,] values = new string[2, 3];
             for (int i = 0; i < 2; i++)
             {
