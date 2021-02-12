@@ -6,7 +6,14 @@ namespace FactoryMethod
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var employeeData = new Employee {
+                EmployeeType = 1,
+            };
+
+            BaseEmployeeFactory employeeFactory = new EmployeeFactory2().CreateFactory(employeeData);
+            employeeFactory.ApplySalary();
+
+
         }
 
         
@@ -15,9 +22,10 @@ namespace FactoryMethod
     public class Employee
     {
         public int EmployeeType;
+        public int Salary;
         public int Bonus;
-        public int MedicalAllowance;
-        public int RentalAllowance;
+        public int ExtraBenefit;
+        public int Overtime;
         public Employee()
         {
             
@@ -27,8 +35,9 @@ namespace FactoryMethod
     public interface IEmplyee
     {
         public int GetBonas();
+        public int BasePay();
 
-        
+
     }
     public class PermanentEmployee : IEmplyee
     {
@@ -37,7 +46,12 @@ namespace FactoryMethod
             return 100;
         }
 
-        public int GetMonthlyMedication()
+        int IEmplyee.BasePay()
+        {
+            return 1500;
+        }
+
+        public int GetBenefit()
         {
             return 2000;
         }
@@ -50,9 +64,14 @@ namespace FactoryMethod
             return 10;
         }
 
-        public int GetMonthlyRental()
+        int IEmplyee.BasePay()
         {
             return 1000;
+        }
+
+        public int GetOvertime()
+        {
+            return 500;
         }
     }
 
@@ -86,8 +105,9 @@ namespace FactoryMethod
 
         public Employee ApplySalary()
         {
-            IEmplyee empoyeeType = this.Create();
-            _employee.Bonus = empoyeeType.GetBonas();
+            IEmplyee anyEmployee = this.Create();
+            _employee.Bonus = anyEmployee.GetBonas();
+            _employee.Salary = anyEmployee.BasePay();
             return _employee;
         }
     }
@@ -102,8 +122,34 @@ namespace FactoryMethod
         {
             PermanentEmployee pe = new PermanentEmployee();
 
-            _employee.MedicalAllowance = pe.GetMonthlyMedication();
+            _employee.ExtraBenefit = pe.GetBenefit();
             return pe;
+        }
+    }
+
+    public class ContractEmployeeFactory : BaseEmployeeFactory
+    {
+        public ContractEmployeeFactory(Employee emplyee) : base(emplyee)
+        { }
+
+        public override IEmplyee Create()
+        {
+            ContractEmployee ce = new ContractEmployee();
+            _employee.Overtime = ce.GetOvertime();
+            return ce;
+        }
+    }
+
+    public class EmployeeFactory2
+    {
+        public BaseEmployeeFactory CreateFactory(Employee employee)
+        {
+            if (employee.EmployeeType == 1)
+                return new PermanentEmployeeFactory(employee);
+            else if (employee.EmployeeType == 2)
+                return new ContractEmployeeFactory(employee);
+
+            return null;
         }
     }
 
