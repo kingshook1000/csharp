@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConstructor", "TestConstructor\TestConstructor.csproj", "{C5ED4C18-9132-4AFA-90CA-2A6144A271FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestException", "TestException\TestException.csproj", "{68FB033E-0122-4F51-80F2-7442BEA2EF76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestException", "TestException\TestException.csproj", "{68FB033E-0122-4F51-80F2-7442BEA2EF76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonTest", "JsonTest\JsonTest.csproj", "{BF5E340B-6F86-4343-83ED-F304672AB595}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{68FB033E-0122-4F51-80F2-7442BEA2EF76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68FB033E-0122-4F51-80F2-7442BEA2EF76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68FB033E-0122-4F51-80F2-7442BEA2EF76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF5E340B-6F86-4343-83ED-F304672AB595}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF5E340B-6F86-4343-83ED-F304672AB595}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF5E340B-6F86-4343-83ED-F304672AB595}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF5E340B-6F86-4343-83ED-F304672AB595}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
