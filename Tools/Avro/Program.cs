@@ -53,6 +53,18 @@ namespace Avro
 
             testData.Add(expected);
 
+            dynamic expected2 = new AvroRecord(rootSchema);
+            expected2.SequenceNumber = Convert.ToInt64(878425);
+            expected2.Offset = "339329813680";
+            expected2.EnqueuedTimeUtc = "2020-11-05T00:00:00.0";
+            expected2.SystemProperties = new Dictionary<string, object>();
+            expected2.Properties = new Dictionary<string, object>();
+
+            var content2 = File.ReadAllText(@"E:\code\csharp1\Tools\Avro\input\01916726-cadc-4b33-91d0-ac6c2a003527");
+            expected2.Body = Encoding.ASCII.GetBytes(content2);
+
+            testData.Add(expected2);
+
             var path = @"c:\temp\ledger.avro";
 
             using (var buffer = new MemoryStream())
